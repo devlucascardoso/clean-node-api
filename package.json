@@ -16,9 +16,9 @@
     "env": ["jest"]
   },
   "devDependencies": {
-    "husky": "^8.0.1",
+    "husky": "^4.0.0-beta.5",
     "jest": "^28.1.1",
-    "lint-staged": "^13.0.1",
+    "lint-staged": "^9.4.3",
     "standard": "^17.0.0"
   },
   "dependencies": {
