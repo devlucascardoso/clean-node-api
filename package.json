@@ -2,7 +2,7 @@
   "name": "clean-node-api",
   "version": "1.0.0",
   "description": "Construindo uma API Rest em NodeJS utilizando TDD, Clean Architecture e Design Patterns.",
-  "author": "@devlucascardoso",
+  "author": "devlucascardoso",
   "license": "ISC",
   "main": "index.js",
   "scripts": {
@@ -13,9 +13,7 @@
     "test:ci": "npm test -- --coverage"
   },
   "standard": {
-    "env": [
-      "jest"
-    ]
+    "env": ["jest"]
   },
   "devDependencies": {
     "husky": "^8.0.1",
