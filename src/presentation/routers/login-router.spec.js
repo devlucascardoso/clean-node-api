@@ -1,6 +1,6 @@
 const LoginRouter = require('./login-router')
-const { UnauthorizedError, ServerError } = require('../errors')
-const { InvalidParamError, MissingParamError } = require('../../utils/errors')
+const { MissingParamError, InvalidParamError } = require('../../utils/errors')
+const { ServerError, UnauthorizedError } = require('../errors')
 
 const makeSut = () => {
   const authUseCaseSpy = makeAuthUseCase()
@@ -26,12 +26,12 @@ const makeEmailValidator = () => {
 }
 
 const makeEmailValidatorWithError = () => {
-  class makeEmailValidatorWithError {
+  class EmailValidatorSpy {
     isValid () {
       throw new Error()
     }
   }
-  return new makeEmailValidatorWithError()
+  return new EmailValidatorSpy()
 }
 
 const makeAuthUseCase = () => {
@@ -88,10 +88,9 @@ describe('Login Router', () => {
     expect(httpResponse.body).toEqual(new ServerError())
   })
 
-  test('Should return 500 if no httpRequest has no body', async () => {
+  test('Should return 500 if httpRequest has no body', async () => {
     const { sut } = makeSut()
-    const httpRequest = {}
-    const httpResponse = await sut.route(httpRequest)
+    const httpResponse = await sut.route({})
     expect(httpResponse.statusCode).toBe(500)
     expect(httpResponse.body).toEqual(new ServerError())
   })
@@ -150,7 +149,6 @@ describe('Login Router', () => {
   })
 
   test('Should return 500 if AuthUseCase has no auth method', async () => {
-    //challenge: find the difference
     const sut = new LoginRouter({})
     const httpRequest = {
       body: {
@@ -206,8 +204,6 @@ describe('Login Router', () => {
 
   test('Should return 500 if EmailValidator has no isValid method', async () => {
     const authUseCaseSpy = makeAuthUseCase()
-    //challenge solved:
-    //const emailValidatorSpy = {}
     const sut = new LoginRouter(authUseCaseSpy, {})
     const httpRequest = {
       body: {

@@ -87,8 +87,6 @@ describe('Auth UseCase', () => {
     const sut = new AuthUseCase({})
     const promise = sut.auth('any_email@mail.com', 'any_password')
     expect(promise).rejects.toThrow()
-    // trade off + linhas e passar um erro personalizado || - linhas e retornar uma excessão genérica
-    // .toThrow(new InvalidParamError('loadUserByEmailRepository'))
   })
 
   test('Should return null if an invalid email is provided', async () => {
