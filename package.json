@@ -13,9 +13,7 @@
     "test:ci": "npm test -- --coverage"
   },
   "standard": {
-    "env": [
-      "jest"
-    ]
+    "env": ["jest"]
   },
   "devDependencies": {
     "@shelf/jest-mongodb": "^3.0.1",
