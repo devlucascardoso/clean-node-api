@@ -45,7 +45,7 @@ $ npm run start
 
 ```
 
-A aplicação pode ser acessada em [`localhost:5858`](http://localhost:5858)
+A aplicação pode ser acessada em [`http://localhost:5858/api/login`](http://localhost:5858/api/login)
 
 ## 📝 Licença
 
